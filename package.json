@@ -1,0 +1,12 @@
+{
+  "name": "APIrest",
+  "version": "1.0.0",
+  "description": "Base API Rest",
+  "main": "server.js",
+  "dependencies": {
+    "express": "latest",
+    "mongojs": "latest",
+    "body-parser": "latest",
+    "ejs": "latest"
+  }
+}
