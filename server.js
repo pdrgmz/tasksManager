@@ -19,15 +19,23 @@ app.use(express.static(path.join(__dirname,'models')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 //Definir rutas y sus controladores
 var index = require('./controlers/index');
 app.use('/', index);
 
-var eventos = require('./controlers/tareas');
+var eventos = require('./controlers/random');
 app.use('/api', eventos);
 
 //Levantar el Servidor
-var port = 3000;
+var port = parseInt(process.argv[2]);
+global.componente = process.argv[3];
 app.listen(port, function(){
-	console.log('Servidor escuchando en ' + port);
+	console.log('Servidor escuchando en ' + port +" "+ componente);
 });
